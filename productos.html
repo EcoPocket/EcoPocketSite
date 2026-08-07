@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EcoPocket - Productos</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Navbar alineado con index.html -->
+    <header class="navbar">
+      <div class="logo">
+        <a href="index.html"><strong>EcoPocket</strong></a>
+      </div>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html">Sobre Nosotros</a></li>
+          <li><a href="productos.css" class="active">Productos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="page">
+      <section class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">Moda sostenible</p>
+          <h1>Billeteras únicas hechas con jeans reciclados</h1>
+          <p>
+            Cada pieza combina estilo, durabilidad y una historia ecológica.
+          </p>
+          <div class="hero-actions">
+            <a href="#producto">Ver producto</a>
+          </div>
+        </div>
+
+        <div class="hero-card" id="producto">
+          <div class="product-card">
+            <img
+              class="product-image"
+              src="Gemini_Generated_Image_qw0xa0qw0xa0qw0x.png"
+              alt="Billetera Eco Jeans"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section class="editor-section">
+        <h2>EcoPocket</h2>
+        <div class="editor-grid">
+          <form id="editorForm" class="editor-form">
+            <label>
+              Precio
+              <input type="text" id="priceInput" value="$45.000" />
+            </label>
+            <label>
+              Descripción
+              <textarea id="descriptionInput">Billetera artesanal hecha con retazos de jean reciclado, cierre resistente y un diseño moderno para el día a día.</textarea>
+            </label>
+            <button type="submit">Actualizar vista</button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Sección de Contacto -->
+      <section class="contact-section" id="contacto">
+        <h2>Contacto</h2>
+        <div class="contact-card">
+          <div class="contact-info">
+            <p><strong>Correo electrónico:</strong> ecopocketcontacto@gmail.com</p>
+            <p><strong>Teléfono:</strong> <a href="tel:+59892602225">+598 92 602 225</a></p>
+          </div>
+          <a
+            class="contact-btn"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=ecopocketcontacto@gmail.com&su=Consulta%20sobre%20EcoPocket"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Contáctanos
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const editorForm = document.getElementById("editorForm");
+      const priceInput = document.getElementById("priceInput");
+      const descriptionInput = document.getElementById("descriptionInput");
+      const defaultImage = "Gemini_Generated_Image_qw0xa0qw0xa0qw0x.png";
+
+      function updatePreview(event) {
+        if (event) event.preventDefault();
+
+        const imageUrl = defaultImage;
+        const nextDescription = descriptionInput.value.trim() || "Billetera artesanal hecha con retazos de jean reciclado.";
+
+        document.querySelectorAll(".product-image").forEach((img) => {
+          img.src = imageUrl;
+        });
+      }
+
+      editorForm.addEventListener("submit", updatePreview);
+      updatePreview();
+    </script>
+  </body>
+</html>
