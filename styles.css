@@ -11,6 +11,23 @@
   box-sizing: border-box;
 }
 
+.navbar-logo {
+  width: 28px;        /* Cambia este valor para ajustar el tamaño */
+  height: 28px;       /* Mantén el mismo valor que el ancho para que sea cuadrado o perfecto */
+  object-fit: cover;  /* Mantiene la proporción interna del logo sin deformarlo */
+  border-radius: 50%; /* Mantén 50% si quieres que se vea circular, o cámbialo a 6px para bordes suavemente redondeados */
+}
+
+.logo a {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--green-dark);
+  text-decoration: none;
+  display: flex;
+  align-items: center; /* Alinea verticalmente al centro la imagen y el texto */
+  gap: 10px;           /* Espacio entre la imagen y el texto */
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
