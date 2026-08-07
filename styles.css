@@ -10,6 +10,166 @@
 * {
   box-sizing: border-box;
 }
+/* Carrusel de Equipo */
+.carousel-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 20px 0 10px;
+  padding: 0 10px;
+}
+
+.carousel-track-container {
+  overflow: hidden;
+  width: 100%;
+  padding: 20px 0;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 24px;
+  transition: transform 0.4s ease-in-out;
+}
+
+.team-card {
+  min-width: calc((100% - 48px) / 3);
+  background: white;
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 1px solid rgba(47, 107, 78, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-4px);
+}
+
+.member-avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  border: 3px solid var(--green);
+  overflow: hidden;
+}
+
+.member-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-placeholder {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--green-dark);
+}
+
+.member-info h3 {
+  margin: 0 0 8px;
+  font-size: 1.25rem;
+  color: var(--green-dark);
+}
+
+.role-badge {
+  display: inline-block;
+  background: rgba(47, 107, 78, 0.12);
+  color: var(--green-dark);
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 4px 14px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.member-info p {
+  font-size: 0.95rem;
+  color: #55685c;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.carousel-btn {
+  background: white;
+  border: 1px solid rgba(47, 107, 78, 0.2);
+  color: var(--green-dark);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.carousel-btn:hover:not(:disabled) {
+  background: var(--green);
+  color: white;
+}
+
+.carousel-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.prev-btn {
+  margin-right: -10px;
+}
+
+.next-btn {
+  margin-left: -10px;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #c8d8ce;
+  cursor: pointer;
+  transition: background-color 0.2s ease, width 0.2s ease;
+}
+
+.dot.active {
+  background: var(--green);
+  width: 24px;
+  border-radius: 999px;
+}
+
+/* Responsivo para el Carrusel */
+@media (max-width: 900px) {
+  .team-card {
+    min-width: calc((100% - 24px) / 2);
+  }
+}
+
+@media (max-width: 600px) {
+  .team-card {
+    min-width: 100%;
+  }
+}
 
 .navbar-logo {
   width: 150px;       /* Cambia este valor para ajustar el tamaño */
