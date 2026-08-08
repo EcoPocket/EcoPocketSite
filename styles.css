@@ -73,7 +73,7 @@ html, body {
   color: var(--green);
 }
 
-/* Botón hamburguesa: oculto estrictamente en PC */
+/* Ocultar botón hamburguesa en PC */
 .menu-toggle,
 button.menu-toggle {
   display: none !important;
@@ -83,7 +83,6 @@ button.menu-toggle {
   color: var(--green-dark);
   cursor: pointer;
   padding: 4px 8px;
-  border-radius: 8px;
 }
 
 /* --- ESTRUCTURA GENERAL --- */
@@ -127,6 +126,10 @@ button.menu-toggle {
   border: 1px solid rgba(47, 107, 78, 0.1);
 }
 
+.highlight-card {
+  background: rgba(255, 255, 255, 0.85);
+}
+
 .card-tag {
   display: inline-block;
   background: rgba(47, 107, 78, 0.12);
@@ -139,13 +142,13 @@ button.menu-toggle {
   text-transform: uppercase;
 }
 
-/* --- DENTRO DE PRODUCTOS --- */
+/* --- VISTA DE PRODUCTO ESTÁTICA --- */
 .product-detail-section {
   background: white;
   border-radius: 24px;
   padding: 32px;
   box-shadow: var(--shadow);
-  margin-top: 20px;
+  border: 1px solid rgba(47, 107, 78, 0.1);
 }
 
 .product-container {
@@ -157,23 +160,23 @@ button.menu-toggle {
 
 .main-product-img {
   width: 100%;
-  max-height: 400px;
+  max-height: 420px;
   object-fit: cover;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 .product-info-detail h1 {
   font-size: 2.2rem;
   color: var(--green-dark);
-  margin: 10px 0;
+  margin: 10px 0 6px;
 }
 
 .product-price {
   font-size: 2rem;
   font-weight: 700;
   color: var(--green);
-  margin: 12px 0 20px;
+  margin: 0 0 16px;
 }
 
 .product-description {
@@ -183,25 +186,35 @@ button.menu-toggle {
   margin-bottom: 20px;
 }
 
-.product-features {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.product-spec-box {
+  background: var(--cream);
+  padding: 18px;
+  border-radius: 16px;
+  margin-bottom: 24px;
 }
 
-.product-features li {
+.product-spec-box h3 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+  color: var(--green-dark);
+}
+
+.spec-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.spec-list li {
   font-size: 0.95rem;
   color: var(--text);
-  background: var(--cream);
-  padding: 10px 14px;
-  border-radius: 10px;
 }
 
 .buy-btn {
-  display: inline-block;
+  display: block;
   text-align: center;
   width: 100%;
   font-size: 1.1rem;
@@ -400,7 +413,7 @@ button.menu-toggle {
   .page {
     padding: 16px;
   }
-  
+
   .product-detail-section {
     padding: 20px;
   }

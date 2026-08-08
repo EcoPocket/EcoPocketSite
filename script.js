@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- CARRUSEL DE INTEGRANTES ---
+  // --- CARRUSEL DE INTEGRANTES (EQUIPO.HTML) ---
   const track = document.getElementById('carouselTrack');
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
