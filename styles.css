@@ -73,7 +73,7 @@ html, body {
   color: var(--green);
 }
 
-/* Ocultar botón hamburguesa en PC */
+/* Ocultar botón hamburguesa en PC (Estrictamente) */
 .menu-toggle,
 button.menu-toggle {
   display: none !important;
@@ -101,6 +101,14 @@ button.menu-toggle {
   font-size: clamp(2rem, 4vw, 2.8rem);
   color: var(--green-dark);
   margin: 0 0 12px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--green);
 }
 
 .hero-subtitle {
@@ -140,6 +148,19 @@ button.menu-toggle {
   border-radius: 999px;
   margin-bottom: 12px;
   text-transform: uppercase;
+}
+
+.values-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.values-list li {
+  line-height: 1.5;
 }
 
 /* --- VISTA DE PRODUCTO ESTÁTICA --- */
@@ -190,7 +211,6 @@ button.menu-toggle {
   background: var(--cream);
   padding: 18px;
   border-radius: 16px;
-  margin-bottom: 24px;
 }
 
 .product-spec-box h3 {
@@ -211,13 +231,6 @@ button.menu-toggle {
 .spec-list li {
   font-size: 0.95rem;
   color: var(--text);
-}
-
-.buy-btn {
-  display: block;
-  text-align: center;
-  width: 100%;
-  font-size: 1.1rem;
 }
 
 /* --- CARRUSEL DE EQUIPO --- */
@@ -300,6 +313,11 @@ button.menu-toggle {
   flex-shrink: 0;
 }
 
+.carousel-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
 .carousel-dots {
   display: flex;
   justify-content: center;
@@ -322,36 +340,70 @@ button.menu-toggle {
   border-radius: 999px;
 }
 
-/* --- CONTACTO Y FOOTER --- */
+/* --- SECCIÓN CONTACTO Y BOTONES REDES SOCIALES --- */
 .contact-section {
   margin-top: 28px;
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(8px);
   border-radius: 24px;
-  padding: 24px;
+  padding: 28px 24px;
   box-shadow: var(--shadow);
+  border: 1px solid rgba(47, 107, 78, 0.1);
 }
 
-.contact-card {
+.contact-section h2 {
+  color: var(--green-dark);
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.social-buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.social-btn {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.contact-btn {
-  padding: 12px 24px;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 20px;
   border-radius: 999px;
-  background: var(--green);
-  color: white;
   text-decoration: none;
   font-weight: 700;
-  transition: background 0.2s ease;
+  font-size: 0.95rem;
+  color: white;
+  background: var(--green);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.25s ease;
 }
 
-.contact-btn:hover {
-  background: var(--green-dark);
+.social-btn i {
+  font-size: 1.3rem;
+}
+
+.social-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* Colores de Marca al pasar el cursor (Hover) */
+.social-btn.whatsapp:hover {
+  background-color: #25d366;
+}
+
+.social-btn.instagram:hover {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+
+.social-btn.tiktok:hover {
+  background-color: #000000;
+}
+
+.social-btn.email:hover {
+  background-color: var(--green-dark);
 }
 
 .footer {
@@ -394,11 +446,6 @@ button.menu-toggle {
   .product-container {
     grid-template-columns: 1fr;
   }
-
-  .contact-card {
-    flex-direction: column;
-    align-items: flex-start;
-  }
 }
 
 @media (max-width: 600px) {
@@ -416,5 +463,14 @@ button.menu-toggle {
 
   .product-detail-section {
     padding: 20px;
+  }
+  
+  .social-buttons-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .social-btn {
+    padding: 12px 14px;
+    font-size: 0.85rem;
   }
 }

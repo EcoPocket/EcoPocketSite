@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // Gestos táctiles (Swipe)
+    // Gestos táctiles (Swipe) para dispositivos móviles
     let startX = 0;
     let endX = 0;
 
