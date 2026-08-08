@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- CARRUSEL DE INTEGRANTES (SI EXISTE) ---
+  // --- CARRUSEL DE INTEGRANTES ---
   const track = document.getElementById('carouselTrack');
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const maxIdx = getMaxIndex();
       if (currentIndex > maxIdx) currentIndex = maxIdx;
 
-      const cardWidth = cards[0].offsetWidth + 24; // Ancho + margen
+      const cardWidth = cards[0].offsetWidth + 24;
       track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
 
       if (dotsContainer) {
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // --- GESTOS TÁCTILES (SWIPE MÓVIL) ---
+    // Gestos táctiles (Swipe)
     let startX = 0;
     let endX = 0;
 
@@ -90,25 +90,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     track.addEventListener('touchend', (e) => {
       endX = e.changedTouches[0].clientX;
-      handleSwipe();
-    }, { passive: true });
-
-    function handleSwipe() {
       const threshold = 40;
       const maxIdx = getMaxIndex();
 
-      if (startX - endX > threshold) {
-        if (currentIndex < maxIdx) {
-          currentIndex++;
-          updateCarousel();
-        }
-      } else if (endX - startX > threshold) {
-        if (currentIndex > 0) {
-          currentIndex--;
-          updateCarousel();
-        }
+      if (startX - endX > threshold && currentIndex < maxIdx) {
+        currentIndex++;
+        updateCarousel();
+      } else if (endX - startX > threshold && currentIndex > 0) {
+        currentIndex--;
+        updateCarousel();
       }
-    }
+    }, { passive: true });
 
     window.addEventListener('resize', () => {
       createDots();
@@ -117,19 +109,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     createDots();
     updateCarousel();
-  }
-
-  // --- EDITOR DE VISTA PREVIA DE PRODUCTO (PRODUCTOS.HTML) ---
-  const editorForm = document.getElementById("editorForm");
-  const descriptionInput = document.getElementById("descriptionInput");
-
-  if (editorForm) {
-    editorForm.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const defaultImage = "Gemini_Generated_Image_qw0xa0qw0xa0qw0x.png";
-      document.querySelectorAll(".product-image").forEach((img) => {
-        img.src = defaultImage;
-      });
-    });
   }
 });

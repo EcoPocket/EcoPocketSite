@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Navegación -->
+  <!-- Menú de Navegación -->
   <header class="navbar">
     <div class="logo">
       <a href="index.html">
@@ -20,7 +20,7 @@
     <nav>
       <ul class="nav-menu" id="navMenu">
         <li><a href="index.html">Sobre Nosotros</a></li>
-        <li><a href="equipo.html">Nuestro equipo</a></li>
+        <li><a href="equipo.html">Nuestro Equipo</a></li>
         <li><a href="productos.html" class="active">Productos</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
@@ -28,47 +28,47 @@
   </header>
 
   <main class="page">
-    <section class="hero">
-      <div class="hero-content">
-        <p class="eyebrow">Moda sostenible</p>
-        <h1>Billeteras únicas hechas con jeans reciclados</h1>
-        <p>
-          Cada pieza combina estilo, durabilidad y una historia ecológica.
-        </p>
-        <div class="hero-actions">
-          <a href="#producto">Ver producto</a>
-        </div>
-      </div>
-
-      <div class="hero-card" id="producto">
-        <div class="product-card">
+    <!-- Presentación de Producto -->
+    <section class="product-detail-section" id="producto">
+      <div class="product-container">
+        
+        <div class="product-gallery">
           <img
-            class="product-image"
+            class="main-product-img"
             src="Gemini_Generated_Image_qw0xa0qw0xa0qw0x.png"
             alt="Billetera Eco Jeans"
           />
         </div>
+
+        <div class="product-info-detail">
+          <span class="role-badge">100% Reciclado</span>
+          <h1>Billetera Eco Jeans</h1>
+          <p class="product-price">$ 45.000</p>
+          
+          <p class="product-description">
+            Billetera artesanal confeccionada con retazos de jean reciclado seleccionados a mano. Cada pieza cuenta con un diseño único, costuras reforzadas de alta durabilidad y compartimentos para billetes y tarjetas.
+          </p>
+
+          <ul class="product-features">
+            <li><strong>Material:</strong> Mezclilla / Denim recuperado</li>
+            <li><strong>Confección:</strong> 100% artesanal y sostenible</li>
+            <li><strong>Capacidad:</strong> Compartimento para billetes y 6 tarjetas</li>
+          </ul>
+
+          <a
+            class="contact-btn buy-btn"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=ecopocketcontacto@gmail.com&su=Consulta%20sobre%20Billetera%20Eco%20Jeans"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Encargar Producto
+          </a>
+        </div>
+
       </div>
     </section>
 
-    <section class="editor-section">
-      <h2>EcoPocket</h2>
-      <div class="editor-grid">
-        <form id="editorForm" class="editor-form">
-          <label>
-            Precio
-            <input type="text" id="priceInput" value="$45.000" />
-          </label>
-          <label>
-            Descripción
-            <textarea id="descriptionInput">Billetera artesanal hecha con retazos de jean reciclado, cierre resistente y un diseño moderno para el día a día.</textarea>
-          </label>
-          <button type="submit">Actualizar vista</button>
-        </form>
-      </div>
-    </section>
-
-    <!-- Contacto -->
+    <!-- Sección de Contacto -->
     <section class="contact-section" id="contacto">
       <h2>Contacto</h2>
       <div class="contact-card">
