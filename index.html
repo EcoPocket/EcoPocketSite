@@ -1,96 +1,98 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
+<head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>EcoPocket - Moda Sostenible</title>
-  <!-- Favicon / Logo en la pestaña del navegador -->
   <link rel="icon" type="image/jpeg" href="logo.jpeg" />
   <link rel="stylesheet" href="styles.css" />
 </head>
-  <body>
-    <!-- Menú de Navegación -->
-    <header class="navbar">
-  <div class="logo">
-    <a href="index.html">
-      <img src="logo.jpeg" alt="Logo EcoPocket" class="navbar-logo" width=100px height=100px/>
-      <span>EcoPocket</span>
-    </a>
-  </div>
-  <nav>
-    <ul class="nav-menu">
-      <li><a href="index.html">Sobre Nosotros</a></li>
-      <li><a href="equipo.html">Nuestro equipo</a></li>
-      <li><a href="productos.html">Productos</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
-  </nav>
-</header>
+<body>
+  <!-- Navegación -->
+  <header class="navbar">
+    <div class="logo">
+      <a href="index.html">
+        <img src="logo.jpeg" alt="Logo EcoPocket" class="navbar-logo" />
+        <span>EcoPocket</span>
+      </a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+    <nav>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html" class="active">Sobre Nosotros</a></li>
+        <li><a href="equipo.html">Nuestro equipo</a></li>
+        <li><a href="productos.html">Productos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <main class="page">
-      <!-- Sección Principal (Hero) -->
-      <section class="about-hero">
-        <div class="about-hero-content">
-          <p class="eyebrow">Moda Sostenible y Consciente</p>
-          <h1>Transformando retazos en estilo con historia</h1>
-          <p class="hero-subtitle">
-            En EcoPocket convertimos mezclilla y jeans reciclados en billeteras y accesorios de alta calidad, promoviendo el consumo responsable y la economía circular.
-          </p>
+  <main class="page">
+    <!-- Hero -->
+    <section class="about-hero">
+      <div class="about-hero-content">
+        <p class="eyebrow">Moda Sostenible y Consciente</p>
+        <h1>Transformando retazos en estilo con historia</h1>
+        <p class="hero-subtitle">
+          En EcoPocket convertimos mezclilla y jeans reciclados en billeteras y accesorios de alta calidad, promoviendo el consumo responsable y la economía circular.
+        </p>
+      </div>
+    </section>
+
+    <!-- Historia y Valores -->
+    <section class="grid-two-col">
+      <div class="card">
+        <span class="card-tag">Nuestra Historia</span>
+        <h2>De retazo a accesorio de diseño</h2>
+        <p>
+          EcoPocket nació de una idea sencilla pero contundente: darle una segunda vida al textil más popular y resistente del mundo, el jean. Cada año miles de prendas son descartadas, por lo que decidimos rescatar estos materiales para confeccionar billeteras artesanales únicas.
+        </p>
+        <p>
+          Ningún EcoPocket es idéntico a otro. Los patrones de desgaste, las tonalidades del denim y las costuras artesanales garantizan que lleves contigo una pieza verdaderamente irrepetible.
+        </p>
+      </div>
+
+      <div class="card highlight-card">
+        <span class="card-tag">Nuestro Compromiso</span>
+        <h2>Valores que nos mueven</h2>
+        <ul class="values-list">
+          <li>
+            <strong>Sostenibilidad Activa:</strong> Reducimos el desperdicio textil recuperando jeans en desuso.
+          </li>
+          <li>
+            <strong>Artesanía Local:</strong> Confeccionados a mano cuidando cada detalle y acabado.
+          </li>
+          <li>
+            <strong>Calidad y Durabilidad:</strong> El jean es un material robusto pensado para acompañarte todos los días.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section class="contact-section" id="contacto">
+      <h2>Contacto</h2>
+      <div class="contact-card">
+        <div class="contact-info">
+          <p><strong>Correo electrónico:</strong> ecopocketcontacto@gmail.com</p>
+          <p><strong>Teléfono:</strong> <a href="tel:+59892602225">+598 92 602 225</a></p>
         </div>
-      </section>
+        <a
+          class="contact-btn"
+          href="https://mail.google.com/mail/?view=cm&fs=1&to=ecopocketcontacto@gmail.com&su=Consulta%20sobre%20EcoPocket"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Contáctanos
+        </a>
+      </div>
+    </section>
+  </main>
 
-      <!-- Nuestra Historia y Valores -->
-      <section class="grid-two-col">
-        <div class="card">
-          <span class="card-tag">Nuestra Historia</span>
-          <h2>De retazo a accesorio de diseño</h2>
-          <p>
-            EcoPocket nació de una idea sencilla pero contundente: darle una segunda vida al textil más popular y resistente del mundo, el jean. Cada año miles de prendas son descartadas, por lo que decidimos rescatar estos materiales para confeccionar billeteras artesanales únicas.
-          </p>
-          <p>
-            Ningún EcoPocket es idéntico a otro. Los patrones de desgaste, las tonalidades del denim y las costuras artesanales garantizan que lleves contigo una pieza verdaderamente irrepetible.
-          </p>
-        </div>
+  <footer class="footer">
+    <p>© EcoPocket — Moda Sostenible. Todos los derechos reservados.</p>
+  </footer>
 
-        <div class="card highlight-card">
-          <span class="card-tag">Nuestro Compromiso</span>
-          <h2>Valores que nos mueven</h2>
-          <ul class="values-list">
-            <li>
-              <strong>Sostenibilidad Activa:</strong> Reducimos el desperdicio textil recuperando jeans en desuso.
-            </li>
-            <li>
-              <strong>Artesanía Local:</strong> Confeccionados a mano cuidando cada detalle y acabado.
-            </li>
-            <li>
-              <strong>Calidad y Durabilidad:</strong> El jean es un material robusto pensado para acompañarte todos los días.
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- Sección de Contacto -->
-      <section class="contact-section" id="contacto">
-        <h2>Contacto</h2>
-        <div class="contact-card">
-          <div class="contact-info">
-            <p><strong>Correo electrónico:</strong> ecopocketcontacto@gmail.com</p>
-            <p><strong>Teléfono:</strong> <a href="tel:+59892602225">+598 92 602 225</a></p>
-          </div>
-          <a
-            class="contact-btn"
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=ecopocketcontacto@gmail.com&su=Consulta%20sobre%20EcoPocket"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Contáctanos
-          </a>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <p>© EcoPocket — Moda Sostenible. Todos los derechos reservados.</p>
-    </footer>
-  </body>
+  <script src="script.js"></script>
+</body>
 </html>
