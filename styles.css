@@ -439,6 +439,45 @@ textarea {
   line-height: 1.6;
 }
 
+/* Prevenir scroll horizontal no deseado y zoom por desbordamiento */
+html, body {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  position: relative;
+  touch-action: manipulation; /* Mejora la respuesta táctil */
+}
+
+/* Ajustes responsivos para evitar que las tarjetas distorsionen el layout */
+@media (max-width: 768px) {
+  .ecopocket-team-section {
+    width: 100%;
+    padding: 20px 10px;
+  }
+
+  .card {
+    flex: 0 0 calc((100% - 20px) / 2);
+    padding: 20px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-wrapper {
+    padding: 0 10px;
+  }
+
+  /* Mostrar un 85% de la tarjeta para indicar visualmente que hay más contenido al deslizar */
+  .card {
+    flex: 0 0 85%;
+    margin: 0 auto;
+  }
+
+  /* Ocultar flechas en móvil si prefieres deslizar directamente con el dedo */
+  .nav-btn {
+    display: none;
+  }
+}
+
 @media (max-width: 800px) {
   .hero,
   .editor-grid {
