@@ -1,0 +1,88 @@
+document.addEventListener('DOMContentLoaded', () => {
+  // --- MENÚ HAMBURGUESA MÓVIL ---
+  const menuToggle = document.getElementById('menuToggle');
+  const navMenu = document.getElementById('navMenu');
+
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+    });
+  }
+
+  // --- CARRUSEL DE INTEGRANTES ---
+  const track = document.getElementById('track');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const cards = document.querySelectorAll('.card');
+  
+  let currentIndex = 0;
+
+  function getVisibleCards() {
+    const width = window.innerWidth;
+    if (width <= 480) return 1;
+    if (width <= 768) return 2;
+    if (width <= 992) return 3;
+    return 4;
+  }
+
+  function updateCarousel() {
+    if (!cards.length || !track) return;
+    const cardWidth = cards[0].offsetWidth;
+    const gap = 20; // Coincide con el gap de .carousel-track en CSS
+    const moveDistance = (cardWidth + gap) * currentIndex;
+    track.style.transform = `translateX(-${moveDistance}px)`;
+  }
+
+  if (nextBtn && prevBtn) {
+    nextBtn.addEventListener('click', () => {
+      const maxIndex = cards.length - getVisibleCards();
+      currentIndex = currentIndex < maxIndex ? currentIndex + 1 : 0;
+      updateCarousel();
+    });
+
+    prevBtn.addEventListener('click', () => {
+      const maxIndex = cards.length - getVisibleCards();
+      currentIndex = currentIndex > 0 ? currentIndex - 1 : maxIndex;
+      updateCarousel();
+    });
+  }
+
+  // --- GESTOS TÁCTILES (SWIPE EN MÓVIL) ---
+  let startX = 0;
+  let endX = 0;
+
+  if (track) {
+    track.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+    }, { passive: true });
+
+    track.addEventListener('touchend', (e) => {
+      endX = e.changedTouches[0].clientX;
+      handleSwipe();
+    }, { passive: true });
+  }
+
+  function handleSwipe() {
+    const threshold = 40; // Sensibilidad del movimiento
+    const maxIndex = cards.length - getVisibleCards();
+
+    if (startX - endX > threshold) {
+      // Deslizar hacia la izquierda -> Siguiente
+      currentIndex = currentIndex < maxIndex ? currentIndex + 1 : 0;
+      updateCarousel();
+    } else if (endX - startX > threshold) {
+      // Deslizar hacia la derecha -> Anterior
+      currentIndex = currentIndex > 0 ? currentIndex - 1 : maxIndex;
+      updateCarousel();
+    }
+  }
+
+  // RECALCULAR AL CAMBIAR TAMAÑO DE PANTALLA
+  window.addEventListener('resize', () => {
+    const maxIndex = cards.length - getVisibleCards();
+    if (currentIndex > maxIndex) {
+      currentIndex = Math.max(0, maxIndex);
+    }
+    updateCarousel();
+  });
+});
