@@ -1,3 +1,6 @@
+// Variable global para controlar la instancia del gráfico
+let budgetChartInstance = null;
+
 document.addEventListener('DOMContentLoaded', () => {
   // --- MENÚ DESPLEGABLE MÓVIL ---
   const menuToggle = document.getElementById('menuToggle');
@@ -9,13 +12,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- CALCULADORA DE PRESUPUESTO 50/30/20 ---
+  // --- CALCULADORA DE PRESUPUESTO 50/30/20 Y GRÁFICO DE TORTA ---
   const btnBudgetCalc = document.getElementById('btnBudgetCalc');
   if (btnBudgetCalc) {
     btnBudgetCalc.addEventListener('click', (e) => {
       e.preventDefault();
       const incomeInput = document.getElementById('incomeInput');
       const income = parseFloat(incomeInput ? incomeInput.value : 0) || 0;
+
+      if (income <= 0) {
+        alert('Por favor, ingresa un monto de ingresos válido y mayor a 0.');
+        return;
+      }
 
       const needs = income * 0.50;
       const wants = income * 0.30;
@@ -28,6 +36,47 @@ document.addEventListener('DOMContentLoaded', () => {
       if (resNeeds) resNeeds.textContent = `$ ${needs.toLocaleString('es-UY')}`;
       if (resWants) resWants.textContent = `$ ${wants.toLocaleString('es-UY')}`;
       if (resSavings) resSavings.textContent = `$ ${savings.toLocaleString('es-UY')}`;
+
+      // --- RENDERIZADO DEL GRÁFICO DE TORTA ---
+      const chartContainer = document.getElementById('chartContainer');
+      const ctx = document.getElementById('budgetChart');
+
+      if (chartContainer) chartContainer.style.display = 'block';
+
+      if (ctx) {
+        // Si ya hay un gráfico dibujado, se destruye antes de crear uno nuevo
+        if (budgetChartInstance) {
+          budgetChartInstance.destroy();
+        }
+
+        budgetChartInstance = new Chart(ctx, {
+          type: 'pie',
+          data: {
+            labels: ['Necesidades (50%)', 'Gustos (30%)', 'Ahorro (20%)'],
+            datasets: [{
+              data: [needs, wants, savings],
+              backgroundColor: ['#2e7d32', '#0288d1', '#f57c00'],
+              hoverOffset: 6
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                position: 'bottom'
+              },
+              tooltip: {
+                callbacks: {
+                  label: function(context) {
+                    const value = context.raw || 0;
+                    return ` $ ${value.toLocaleString('es-UY')}`;
+                  }
+                }
+              }
+            }
+          }
+        });
+      }
     });
   }
 
@@ -49,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const fullYears = Math.floor(totalMonths / 12);
         const remMonths = totalMonths % 12;
 
-        // Construir texto de tiempo legible
         let timeText = '';
         if (fullYears === 0) {
           timeText = `${totalMonths} ${totalMonths === 1 ? 'mes' : 'meses'}`;
@@ -59,22 +107,13 @@ document.addEventListener('DOMContentLoaded', () => {
           timeText = `${totalMonths} meses (${fullYears} ${fullYears === 1 ? 'año' : 'años'} y ${remMonths} ${remMonths === 1 ? 'mes' : 'meses'})`;
         }
 
-        // Elementos en el DOM
         const elemTotal = document.getElementById('resGoalTotal');
         const elemMonthly = document.getElementById('resGoalMonthly');
         const elemTimeText = document.getElementById('resGoalTimeText');
-        const elemMonths = document.getElementById('resGoalMonths');
-        const elemYears = document.getElementById('resGoalYears');
 
         if (elemTotal) elemTotal.textContent = `$ ${goal.toLocaleString('es-UY')}`;
         if (elemMonthly) elemMonthly.textContent = `$ ${monthly.toLocaleString('es-UY')}`;
-
-        // Soporte para ID único
         if (elemTimeText) elemTimeText.textContent = timeText;
-
-        // Soporte retrocompatible por si mantuviste los IDs separados
-        if (elemMonths) elemMonths.textContent = totalMonths;
-        if (elemYears) elemYears.textContent = (totalMonths / 12).toFixed(1).replace('.', ',');
 
         if (resultsBox) resultsBox.style.display = 'block';
       } else {
