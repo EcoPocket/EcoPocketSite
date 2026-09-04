@@ -46,30 +46,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (!isNaN(goal) && !isNaN(monthly) && goal > 0 && monthly > 0) {
         const totalMonths = Math.ceil(goal / monthly);
-        const years = Math.floor(totalMonths / 12);
-        const remainingMonths = totalMonths % 12;
+        const fullYears = Math.floor(totalMonths / 12);
+        const remMonths = totalMonths % 12;
 
+        // Construir texto de tiempo legible
         let timeText = '';
-
-        if (years === 0) {
+        if (fullYears === 0) {
           timeText = `${totalMonths} ${totalMonths === 1 ? 'mes' : 'meses'}`;
+        } else if (remMonths === 0) {
+          timeText = `${totalMonths} meses (${fullYears} ${fullYears === 1 ? 'año' : 'años'})`;
         } else {
-          const yearStr = `${years} ${years === 1 ? 'año' : 'años'}`;
-          if (remainingMonths === 0) {
-            timeText = `${totalMonths} meses (${yearStr})`;
-          } else {
-            const monthStr = `${remainingMonths} ${remainingMonths === 1 ? 'mes' : 'meses'}`;
-            timeText = `${totalMonths} meses (${yearStr} y ${monthStr})`;
-          }
+          timeText = `${totalMonths} meses (${fullYears} ${fullYears === 1 ? 'año' : 'años'} y ${remMonths} ${remMonths === 1 ? 'mes' : 'meses'})`;
         }
 
+        // Elementos en el DOM
         const elemTotal = document.getElementById('resGoalTotal');
         const elemMonthly = document.getElementById('resGoalMonthly');
         const elemTimeText = document.getElementById('resGoalTimeText');
+        const elemMonths = document.getElementById('resGoalMonths');
+        const elemYears = document.getElementById('resGoalYears');
 
         if (elemTotal) elemTotal.textContent = `$ ${goal.toLocaleString('es-UY')}`;
         if (elemMonthly) elemMonthly.textContent = `$ ${monthly.toLocaleString('es-UY')}`;
+
+        // Soporte para ID único
         if (elemTimeText) elemTimeText.textContent = timeText;
+
+        // Soporte retrocompatible por si mantuviste los IDs separados
+        if (elemMonths) elemMonths.textContent = totalMonths;
+        if (elemYears) elemYears.textContent = (totalMonths / 12).toFixed(1).replace('.', ',');
 
         if (resultsBox) resultsBox.style.display = 'block';
       } else {
