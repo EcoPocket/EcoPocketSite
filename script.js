@@ -46,14 +46,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (!isNaN(goal) && !isNaN(monthly) && goal > 0 && monthly > 0) {
         const months = Math.ceil(goal / monthly);
+        const years = (months / 12).toFixed(1).replace('.', ',');
 
         const elemTotal = document.getElementById('resGoalTotal');
         const elemMonthly = document.getElementById('resGoalMonthly');
         const elemMonths = document.getElementById('resGoalMonths');
+        const elemYears = document.getElementById('resGoalYears');
 
         if (elemTotal) elemTotal.textContent = `$ ${goal.toLocaleString('es-UY')}`;
         if (elemMonthly) elemMonthly.textContent = `$ ${monthly.toLocaleString('es-UY')}`;
         if (elemMonths) elemMonths.textContent = months;
+        if (elemYears) elemYears.textContent = years;
 
         if (resultsBox) resultsBox.style.display = 'block';
       } else {
