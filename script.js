@@ -45,18 +45,31 @@ document.addEventListener('DOMContentLoaded', () => {
       const monthly = parseFloat(monthlyInput ? monthlyInput.value : 0);
 
       if (!isNaN(goal) && !isNaN(monthly) && goal > 0 && monthly > 0) {
-        const months = Math.ceil(goal / monthly);
-        const years = (months / 12).toFixed(1).replace('.', ',');
+        const totalMonths = Math.ceil(goal / monthly);
+        const years = Math.floor(totalMonths / 12);
+        const remainingMonths = totalMonths % 12;
+
+        let timeText = '';
+
+        if (years === 0) {
+          timeText = `${totalMonths} ${totalMonths === 1 ? 'mes' : 'meses'}`;
+        } else {
+          const yearStr = `${years} ${years === 1 ? 'año' : 'años'}`;
+          if (remainingMonths === 0) {
+            timeText = `${totalMonths} meses (${yearStr})`;
+          } else {
+            const monthStr = `${remainingMonths} ${remainingMonths === 1 ? 'mes' : 'meses'}`;
+            timeText = `${totalMonths} meses (${yearStr} y ${monthStr})`;
+          }
+        }
 
         const elemTotal = document.getElementById('resGoalTotal');
         const elemMonthly = document.getElementById('resGoalMonthly');
-        const elemMonths = document.getElementById('resGoalMonths');
-        const elemYears = document.getElementById('resGoalYears');
+        const elemTimeText = document.getElementById('resGoalTimeText');
 
         if (elemTotal) elemTotal.textContent = `$ ${goal.toLocaleString('es-UY')}`;
         if (elemMonthly) elemMonthly.textContent = `$ ${monthly.toLocaleString('es-UY')}`;
-        if (elemMonths) elemMonths.textContent = months;
-        if (elemYears) elemYears.textContent = years;
+        if (elemTimeText) elemTimeText.textContent = timeText;
 
         if (resultsBox) resultsBox.style.display = 'block';
       } else {
