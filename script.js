@@ -9,30 +9,40 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- SIMULADOR FINANCIERO (PÁGINA SECRETA) ---
-  const btnCalc = document.getElementById('btnCalc');
-  if (btnCalc) {
-    btnCalc.addEventListener('click', () => {
-      const q = parseFloat(document.getElementById('simQuantity').value) || 0;
-      const price = parseFloat(document.getElementById('simPrice').value) || 0;
-      
-      const unitCost = 14500;
-      const fixedCosts = 550000;
+  // --- CALCULADORA DE PRESUPUESTO 50/30/20 (PÁGINA SECRETA) ---
+  const btnBudgetCalc = document.getElementById('btnBudgetCalc');
+  if (btnBudgetCalc) {
+    btnBudgetCalc.addEventListener('click', () => {
+      const income = parseFloat(document.getElementById('incomeInput').value) || 0;
 
-      const ingresos = q * price;
-      const costosTotales = fixedCosts + (q * unitCost);
-      const ganancia = ingresos - costosTotales;
+      const needs = income * 0.50;
+      const wants = income * 0.30;
+      const savings = income * 0.20;
 
-      document.getElementById('resIngresos').textContent = `$ ${ingresos.toLocaleString('es-UY')}`;
-      document.getElementById('resCostos').textContent = `$ ${costosTotales.toLocaleString('es-UY')}`;
-      
-      const elemGanancia = document.getElementById('resGanancia');
-      elemGanancia.textContent = `$ ${ganancia.toLocaleString('es-UY')}`;
+      document.getElementById('resNeeds').textContent = `$ ${needs.toLocaleString('es-UY')}`;
+      document.getElementById('resWants').textContent = `$ ${wants.toLocaleString('es-UY')}`;
+      document.getElementById('resSavings').textContent = `$ ${savings.toLocaleString('es-UY')}`;
+    });
+  }
 
-      if (ganancia >= 0) {
-        elemGanancia.className = 'text-success';
+  // --- SIMULADOR DE METAS DE AHORRO (PÁGINA SECRETA) ---
+  const btnGoalCalc = document.getElementById('btnGoalCalc');
+  if (btnGoalCalc) {
+    btnGoalCalc.addEventListener('click', () => {
+      const goal = parseFloat(document.getElementById('goalAmount').value) || 0;
+      const monthly = parseFloat(document.getElementById('monthlySave').value) || 0;
+      const resultsBox = document.getElementById('goalResults');
+
+      if (goal > 0 && monthly > 0) {
+        const months = Math.ceil(goal / monthly);
+
+        document.getElementById('resGoalTotal').textContent = `$ ${goal.toLocaleString('es-UY')}`;
+        document.getElementById('resGoalMonthly').textContent = `$ ${monthly.toLocaleString('es-UY')}`;
+        document.getElementById('resGoalMonths').textContent = months;
+
+        resultsBox.style.display = 'block';
       } else {
-        elemGanancia.className = 'text-danger';
+        alert('Por favor, ingresa números mayores a 0 en ambos campos.');
       }
     });
   }
