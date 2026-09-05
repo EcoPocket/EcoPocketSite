@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
     link.addEventListener('click', (e) => {
       e.preventDefault(); // Evita que el enlace haga la redirección normal
       
-      const userCode = prompt('🔒 Ingresa tu código de acceso de 8 caracteres (E y enviado a tu mail):');
+      const userCode = prompt('🔒 Ingresa tu código de acceso de 8 caracteres (Incluido con la compra de tu billetera y enviado a tu mail):');
 
       // Si el usuario escribió algo y le dio Aceptar
       if (userCode) {
