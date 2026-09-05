@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
     link.addEventListener('click', (e) => {
       e.preventDefault(); // Evita que el enlace haga la redirección normal
       
-      const userCode = prompt('🔒 Ingresa tu código de acceso de 8 caracteres (Incluido con tu EcoPocket y enviado a tu mail):');
+      const userCode = prompt('🔒 Ingresa tu código de acceso de 8 caracteres (E y enviado a tu mail):');
 
       // Si el usuario escribió algo y le dio Aceptar
       if (userCode) {
@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
           // Aquí hacemos la redirección real a la página hiper mega secreta
           window.location.href = 'ecopockethypermegaultrapaginasecretitaparasololosquecompraronproductos.html';
         } else {
-          alert('❌ Código incorrecto. Verifica tu tarjeta EcoPocket e inténtalo de nuevo.');
+          alert('❌ Código incorrecto. Verifica tu codigo en tu Mail e inténtalo de nuevo.');
         }
       }
     });
